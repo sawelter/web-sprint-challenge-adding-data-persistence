@@ -32,7 +32,7 @@ exports.up = function(knex) {
         table.integer('project_id')
             .notNullable()
             .unsigned()
-            .references('projects_id')
+            .references('project_id')
             .inTable('projects')
             .onDelete('RESTRICT')
             .onUpdate('RESTRICT');
@@ -43,7 +43,7 @@ exports.up = function(knex) {
         table.integer('project_id')
             .notNullable()
             .unsigned()
-            .references('projects_id')
+            .references('project_id')
             .inTable('projects')
             .onDelete('RESTRICT')
             .onUpdate('RESTRICT');
