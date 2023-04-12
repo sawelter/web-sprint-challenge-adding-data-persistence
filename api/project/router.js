@@ -1,6 +1,7 @@
 // build your `/api/projects` router here
 const router = require('express').Router();
 const Project = require('./model');
+const mid = require('./middleware')
 
 /* [GET] /api/projects
 Example of response body: [{
@@ -28,7 +29,7 @@ router.get('/', (req, res, next) => {
     //     "project_description":null,
     //     "project_completed":false
     // }
-router.post('/', (req, res, next) => {
+router.post('/', mid.checkPayload, (req, res, next) => {
     Project.create(req.body)
         .then(project => {
             res.status(202).json(project);
