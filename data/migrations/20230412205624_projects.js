@@ -12,7 +12,7 @@ exports.up = function(knex) {
         table.string('project_name', 128)
             .notNullable();
         table.string('project_description', 500);
-        table.boolean('project_completed')
+        table.integer('project_completed')
             .defaultTo(0);
     })
     .createTable('resources' , table => {
@@ -28,7 +28,7 @@ exports.up = function(knex) {
             .notNullable();
         table.string('task_notes', 500);
         table.boolean('task_completed')
-            .defaultTo(0);
+            .defaultTo(false);
         table.integer('project_id')
             .notNullable()
             .unsigned()
