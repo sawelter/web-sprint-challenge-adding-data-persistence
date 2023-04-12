@@ -1,13 +1,18 @@
 // build your `Project` model here
 const db = require('../../data/dbConfig');
 
+async function get(id){
+    return await db('projects').where('project_id', id).first();
+}
 
 async function getAll () {
     return await db('projects');
 }
 
-function addProject () {
-
+async function create (project) {
+    const [project_id] = await db('projects').insert(project);
+    const newProject = await get(project_id);
+    return newProject;
 }
 
 
@@ -22,5 +27,5 @@ Example of response body: [{"project_id":1,"project_name":"bar","project_descrip
 
 module.exports = {
     getAll,
-    addProject
+    create
 }

@@ -12,7 +12,7 @@ exports.up = function(knex) {
         table.string('project_name', 128)
             .notNullable();
         table.string('project_description', 500);
-        table.integer('project_completed')
+        table.boolean('project_completed')
             .defaultTo(0);
     })
     .createTable('resources' , table => {

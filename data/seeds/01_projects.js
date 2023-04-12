@@ -5,20 +5,59 @@
 exports.seed = async function(knex) {
   await knex('projects').truncate()
   await knex('projects').insert([
-    {project_name: 'Spain Trip', project_description: "Planning for trip to Spain in spring 2024"},
-    {project_name: 'Sell the House', project_description: "Fix up the house and put it on the market"},
-    {project_name: 'Teach Cat To Do Tricks', project_completed: true}
+    {
+      project_name: 'Spain Trip', 
+      project_description: "Planning for trip to Spain in spring 2024",
+      project_completed: false
+    },
+    {
+      project_name: 'Sell the House', 
+      project_description: "Fix up the house and put it on the market",
+      project_completed: false
+    },
+    {
+      project_name: 'Teach Cat To Do Tricks', project_completed: true
+    }
   ]);
 
   await knex('tasks').truncate()
   await knex('tasks').insert([
-    {task_description: 'Teach cat how to play fetch', project_id: 3, task_completed: true},
-    {task_description: 'Book a hotel for Madrid', task_notes: "Must be less than $150/night, should be close to city center", project_id: 1},
-    {task_description: 'Learn some important Spanish phrases', project_id: 1},
-    {task_description: 'Repaint the trim', task_notes: "Light purple", project_id: 2},
-    {task_description: 'Find a real estate agent', project_id: 2, task_completed: true},
-    {task_description: 'Teach cat to sit', project_id: 3, task_completed: true, task_notes: "Must be able to stay until command is given to release"},
-    {task_description: 'Find plane tickets', project_id: 1},
+    {
+      task_description: 'Teach cat how to play fetch', project_id: 3, 
+      task_completed: true
+    },
+    {
+      task_description: 'Book a hotel for Madrid', 
+      task_notes: "Must be less than $150/night, should be close to city center", 
+      project_id: 1,
+      task_completed: false
+    },
+    {
+      task_description: 'Learn some important Spanish phrases', 
+      project_id: 1,
+      task_completed: false
+    },
+    {
+      task_description: 'Repaint the trim', 
+      task_notes: "Light purple", 
+      project_id: 2,
+      task_completed: false
+    },
+    {
+      task_description: 'Find a real estate agent', project_id: 2, 
+      task_completed: true
+    },
+    {
+      task_description: 'Teach cat to sit', 
+      project_id: 3, 
+      task_notes: "Must be able to stay until command is given to release",
+      task_completed: true, 
+    },
+    {
+      task_description: 'Find plane tickets', 
+      project_id: 1,
+      task_completed: false
+    },
   ]);
 
   await knex('resources').truncate()

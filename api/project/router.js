@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
         .then(result => {
             res.status(200).json(result);
         })
-        .catch();
+        .catch(next);
 })
 
 // [POST] /api/projects
@@ -28,4 +28,12 @@ router.get('/', (req, res, next) => {
     //     "project_description":null,
     //     "project_completed":false
     // }
+router.post('/', (req, res, next) => {
+    Project.create(req.body)
+        .then(project => {
+            res.status(202).json(project);
+        })
+        .catch(next);
+})
+
 module.exports = router;
