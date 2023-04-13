@@ -6,12 +6,21 @@ async function get(id){
 }
 
 async function getAll () {
-    return await db('projects');
+    const projects = await db('projects');
+
+    for(const project of projects) {
+        project.project_completed = !!project.project_completed;
+    }
+
+    return projects;
 }
 
 async function create (project) {
     const [project_id] = await db('projects').insert(project);
     const newProject = await get(project_id);
+
+    newProject.project_completed = !!newProject.project_completed; // changes project_completed from int to boolean
+
     return newProject;
 }
 
